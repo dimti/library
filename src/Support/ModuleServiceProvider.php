@@ -33,10 +33,15 @@ abstract class ModuleServiceProvider extends ServiceProviderBase
              * Add routes, if available
              */
             $routesFile = base_path() . '/modules/' . $module . '/routes.php';
+
             if (File::isFile($routesFile)) {
                 require $routesFile;
             }
         }
+
+        $this->app->register('Intervention\Image\ImageServiceProvider');
+
+        $this->app->alias('Image', 'Intervention\Image\Facades\Image');
     }
 
     /**

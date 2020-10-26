@@ -369,6 +369,14 @@ class Resizer
             $this->crop($cropStartX, $cropStartY, $newWidth, $newHeight);
         }
 
+        if ($this->getOption('mode') == 'whitespace') {
+            $imgResized = \Image::make($imageResized);
+
+            $imgResized->resizeCanvas(intval($newWidth), intval($newHeight), 'center', false, '#ffffff');
+
+            $this->image = $imgResized->getCore();
+        }
+
         return $this;
     }
 
@@ -561,6 +569,7 @@ class Resizer
                 return $this->getOptimalCrop($newWidth, $newHeight);
 
             case 'fit':
+            case 'whitespace':
                 return $this->getSizeByFit($newWidth, $newHeight);
 
             default:

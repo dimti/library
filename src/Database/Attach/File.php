@@ -593,7 +593,7 @@ class File extends Model
         $defaultOptions = [
             'mode'      => 'auto',
             'offset'    => [0, 0],
-            'quality'   => 90,
+            'quality'   => 97,
             'sharpen'   => 0,
             'interlace' => false,
             'extension' => 'auto',
